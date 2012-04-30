@@ -1,5 +1,3 @@
-"use strict";
-
 // when the workers post back the results via the postMessage API
 // they will call this function to update the DOM with the results
 // computed
@@ -11,18 +9,16 @@ function workerResultHandler(e) {
     var result = e.data.result;
     var var1 = e.data.var1;
     var var2 = e.data.var2;
-    
+
     // jQuery fnd the div and set the text
     var resultDiv = $('<div/>');
     resultDiv.text('[' + id + '] recv result: ' + var1 + ' + ' + var2 + ' = ' + result + ' timestamp: ' + new Date().toUTCString());
     $('#output_area').append(resultDiv);
 }
 
-
-
 // this is the main entry to the javascript
 function mainInit() {
-    
+
     // let's spawn 6 workers!
     var workers = [];
     for (var i = 0; i < 6; ++i) {
