@@ -12,7 +12,7 @@ function workerResultHandler(e) {
 
     // jQuery fnd the div and set the text
     var resultDiv = $('<div/>');
-    resultDiv.text('[' + id + '] recv result: ' + var1 + ' + ' + var2 + ' = ' + result + ' timestamp: ' + new Date().toUTCString());
+    resultDiv.text('[' + id + '] recv result: ' + var1 + ' + ' + var2 + ' = ' + result + ' timestamp: ' + new Date().getTime());
     $('#output_area').append(resultDiv);
 }
 
@@ -35,7 +35,7 @@ function mainInit() {
         var var2 = Math.floor(Math.random() * 100);
         
         // record the input on the DOM
-        $('#input_' + j).text('[' + j + '] sending work: ' + var1 + ' + ' + var2 + ' timestamp: ' + new Date().toUTCString());
+        $('#input_' + j).text('[' + j + '] sending work: ' + var1 + ' + ' + var2 + ' timestamp: ' + new Date().getTime());
         
         // post the vars to the respective worker for them to perform the computation
         workers[j].postMessage({id: j, var1: var1, var2: var2});
